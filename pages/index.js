@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useEffect, useState, useCallback } from "react";
-import { TextField, Checkbox, Button } from "@material-ui/core";
+import { TextField, Checkbox, Button,AppBar,Toolbar } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import Data from "../public/data";
 import { useRouter } from "next/router";
@@ -54,9 +54,9 @@ export default function Login() {
   });
 
   useEffect(() => {
-    // if (localStorage.getItem("user")) {
-    //   router.push("/after-login");
-    // }
+    if (localStorage.getItem("user")) {
+      router.push("/after-login");
+    }
   }, []);
 
   // const handleSubmit = useCallback((e)=>{

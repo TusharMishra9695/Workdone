@@ -9,7 +9,7 @@
 }
 body
 {
-  background-color: rgb(238, 237, 237);
+  background-color: rgb(252, 249, 249);
 }
 .card {
   height: 370px;
@@ -35,6 +35,11 @@ body
   height: 350px;
   width: 100%;
   max-width: 350px;
+}
+.Handleimg3 {
+  height: 70px;
+  width: 100%;
+  max-width: 70px;
 }
 .pagination {
   display: flex;
@@ -103,3 +108,5 @@ small {
   padding: 5px 12px;
   color: #777;
 }
+/* nkk */
+

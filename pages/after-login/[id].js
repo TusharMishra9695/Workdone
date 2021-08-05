@@ -1,6 +1,8 @@
 import { Button, Card, CardContent, Container, Paper } from "@material-ui/core";
 import React from "react";
+import { CartProvider, useCart } from "react-use-cart";
 export default function Post({ postData }) {
+  const {addItem } = useCart();
   return (
     <div>
       <Container>
@@ -23,13 +25,14 @@ export default function Post({ postData }) {
               <h2>{postData.title}</h2>
 
               <h2>Price || {postData.price} $</h2>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={() => addItem(postData)} >
                 Add to cart
               </Button>
             </div>
           </div>
         </Paper>
       </Container>
+     
     </div>
   );
 }
