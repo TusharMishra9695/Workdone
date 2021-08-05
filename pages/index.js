@@ -54,9 +54,9 @@ export default function Login() {
   });
 
   useEffect(() => {
-    if (localStorage.getItem("user")) {
-      router.push("/after-login");
-    }
+    // if (localStorage.getItem("user")) {
+    //   router.push("/after-login");
+    // }
   }, []);
 
   // const handleSubmit = useCallback((e)=>{
@@ -72,7 +72,7 @@ export default function Login() {
     <div>
       <center>
         <form onSubmit={handleSubmit}>
-          <div className="box1">
+          <div className="box1" >
             <div style={{ paddingTop: "40px" }}>
               <h1>Log in</h1>
             </div>
