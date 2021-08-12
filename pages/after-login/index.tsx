@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { POSTS, PAGE } from "../../interfaces/interfac";
 import { Card, CardContent } from "@material-ui/core";
 const url = "https://fakestoreapi.com/products";
 
@@ -36,26 +37,38 @@ export default function App() {
     </div>
   );
 }
-function Post(props) {
+// interface PROP{
+//   data:{
+//     id:number;
+//     title:string;
+//     image:string
+//   };
+// }
+function Post(props: POSTS) {
   const { id, title, image } = props.data;
   return (
-    <center>
-      <Card
-        className="card"
-        style={{ borderRadius: "20px", boxShadow: "1px 1px 2px 2px grey" }}
-      >
-        <CardContent>
-          <small>{id}</small>
-        </CardContent>
-        <h3>{title}</h3>
-        <Link href="/after-login/[id]" as={"/after-login/" + id}>
-          <img src={image} alt="error " className="Handleimg" />
-        </Link>
-      </Card>
-    </center>
+    <Card
+      className="card"
+      style={{ borderRadius: "20px", boxShadow: "1px 1px 2px 2px grey" ,display:"flex",flexDirection:"column",alignItems:"center"}}
+    >
+      <CardContent>
+        <small>{id}</small>
+      </CardContent>
+      <h3>{title}</h3>
+      <Link href="/after-login/[id]" as={"/after-login/" + id}>
+        <img src={image} alt="error " className="Handleimg" />
+      </Link>
+    </Card>
   );
 }
-function Pagination({ data, RenderComponent, title, pageLimit, dataLimit }) {
+
+function Pagination({
+  data,
+  RenderComponent,
+  title,
+  pageLimit,
+  dataLimit,
+}: PAGE) {
   const [pages] = useState(Math.round(data.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -69,7 +82,7 @@ function Pagination({ data, RenderComponent, title, pageLimit, dataLimit }) {
     setCurrentPage((page) => page - 1);
   }
 
-  function changePage(event) {
+  function changePage(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     // not yet implemented
     setCurrentPage((page) => page - 1);
   }
@@ -84,10 +97,10 @@ function Pagination({ data, RenderComponent, title, pageLimit, dataLimit }) {
   const getPaginationGroup = () => {
     // not yet implemented
     let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
-    return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
+    return new Array(pageLimit).fill(1).map((_, idx) => start + idx + 1);
   };
   useEffect(() => {
-    window.scrollTo({ behavior: "smooth", top: "0px" });
+    window.scrollTo({ behavior: "smooth", top: 0 });
   }, [currentPage]);
   return (
     <div>
@@ -95,7 +108,7 @@ function Pagination({ data, RenderComponent, title, pageLimit, dataLimit }) {
 
       {/* show the posts, 10 posts at a time */}
       <div className="dataContainer">
-        {getPaginatedData().map((d, idx) => (
+        {getPaginatedData().map((d: any, idx: any) => (
           <RenderComponent key={idx} data={d} />
         ))}
       </div>

@@ -1,6 +1,7 @@
 import { CartProvider, useCart } from "react-use-cart";
 import { Container,Paper, Typography ,Button} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
+// import { Cart } from "../../interfaces/interfac";
 import RemoveIcon from '@material-ui/icons/Remove';
 import ClearRoundedIcon from '@material-ui/icons/ClearRounded';
 import { useState } from "react";
@@ -20,11 +21,11 @@ export default function Cart() {
     <>
       <h1>Cart ({totalUniqueItems})</h1>
 <Container>
-<div style={{backgroundColor:"rgb(238, 237, 237)",borderRadius:"20px",paddingBottom:"20px"}}>
-    <center>
+<div style={{backgroundColor:"rgb(238, 237, 237)",borderRadius:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+   
     <Typography style={{fontSize:"25px",paddingTop:"20px"}} color="primary"> My Shopping Cart</Typography>
     <h6 style={{marginTop:"0px"}}>You have {totalUniqueItems} items in Shopping Cart</h6>
-    </center>
+
     <Container >
     <div style={{backgroundColor:"white",marginTop:"20px",width:"100%",maxWidth:"1100px"}}>
         
@@ -53,7 +54,7 @@ export default function Cart() {
          */}
     <Container>
 
-{items.map((item) => (
+{items.map((item: any) => (
   <div key={item.id} style={{paddingTop:"20px"}}>
       <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between"}}> 
       <div>
@@ -64,9 +65,9 @@ export default function Cart() {
           </div>
           <div  >
           
-           <RemoveIcon   size="small"  onClick={() => updateItemQuantity(item.id, item.quantity - 1)} style={{marginTop:"20px"}}/>
-           <Button variant="outlined" size="small" style={{marginTop:"-12px"}}>  {item.quantity}</Button>
-           <AddIcon size="small"      onClick={() => updateItemQuantity(item.id, item.quantity + 1)}/>
+           <RemoveIcon    onClick={()=> updateItemQuantity(item.id, item.quantity - 1)} style={{marginTop:"20px"}}/>
+           <Button variant="outlined"  style={{marginTop:"-12px"}}>  {item.quantity}</Button>
+           <AddIcon       onClick={() => updateItemQuantity(item.id, item.quantity + 1)}/>
         
           </div>
           <div >
@@ -80,11 +81,12 @@ export default function Cart() {
           <hr />
   </div>
 ))}
+<Button variant="contained" size="small" color="primary" style={{marginBottom:"20px",width:"80px",float:"right"}} >Total</Button>    
 
 </Container>
 
     </div>
-    
+    <Button variant="contained" color="primary" size="small" style={{marginTop:"20px",width:"100px"}}  >CheckOut</Button>   
     </Container>
 
 </div>

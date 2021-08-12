@@ -14,3 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+.load{
+  height:"30px";
+  width:"200px";
+  background-color:"blue";
+  color:"white";
+  font-size:"20px";
+  word-spacing:"1px" ;
+  letter-spacing:"1px";
+  margin-top:"70px"
+}
